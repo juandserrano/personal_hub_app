@@ -1,4 +1,6 @@
-body {
-  background-color: rgb(216, 216, 216);
-  margin-top: 10%
+.main {
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0px;
 }
+
