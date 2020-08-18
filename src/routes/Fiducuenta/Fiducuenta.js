@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 20,
         padding: 15,
         margin: 20,
-        maxWidth: 500
+        maxWidth: 300
     },
     margin: {
         marginTop: 10,
