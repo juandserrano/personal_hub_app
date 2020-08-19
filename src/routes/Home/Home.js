@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Tarjeta from "../../components/Card/Tarjeta";
 import { Grid } from "@material-ui/core";
+import axios from "axios";
 
 const Home = () => {
   const [cop, setCop] = useState("");
@@ -25,7 +26,13 @@ const Home = () => {
     checkRate();
   });
   return (
-    <div style={{ height: "100vh", backgroundColor: "grey", display: "flex" }}>
+    <div
+      style={{
+        height: "100vh",
+        backgroundColor: "rgb(230,230,230)",
+        display: "flex",
+      }}
+    >
       <Grid
         container
         style={{ margin: "auto" }}
