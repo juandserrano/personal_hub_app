@@ -2,23 +2,22 @@ import React, { useState, useEffect } from "react";
 import Tarjeta from "../../components/Card/Tarjeta";
 import { Grid } from "@material-ui/core";
 import axios from "axios";
+import cheerio from 'cheerio';
 
 const Home = () => {
   const [cop, setCop] = useState("");
 
   const checkRate = async () => {
-    console.log(process.env.REACT_APP_FIXERAPIKEY);
-    const {
-      data: { rates },
-    } = await axios.get(
-      `http://data.fixer.io/api/latest?access_key=8ad7489817acb987992af9b95b7893cb&symbols=CAD,COP`
-    );
+    
+    
+
+    const { data: { rates }} = await axios.get(`http://data.fixer.io/api/latest?access_key=8ad7489817acb987992af9b95b7893cb&format=1`);
     const eurcad = rates.CAD;
     const eurcop = rates.COP;
 
     const cadcop = Math.ceil(eurcop / eurcad);
     setCop(cadcop);
-    console.log(cadcop);
+    
     return;
   };
 
