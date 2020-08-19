@@ -1,43 +1,53 @@
 import React, { useState, useEffect } from "react";
 import Tarjeta from "../../components/Card/Tarjeta";
-import SubTarjeta from "../../components/SubTarjeta/SubTarjeta";
 import { Grid } from "@material-ui/core";
 
-import "./Home.css";
-import axios from "axios";
-
 const Home = () => {
-  const [cop, setCop] = useState('');
+  const [cop, setCop] = useState("");
 
-  // const checkRate = async () => {
-  //   console.log(process.env.REACT_APP_FIXERAPIKEY)
-  //   const { data: { rates } } = await axios.get(`http://data.fixer.io/api/latest?access_key=8ad7489817acb987992af9b95b7893cb&symbols=CAD,COP`);
-  //   const eurcad = rates.CAD;
-  //   const eurcop = rates.COP;
+  const checkRate = async () => {
+    console.log(process.env.REACT_APP_FIXERAPIKEY);
+    const {
+      data: { rates },
+    } = await axios.get(
+      `http://data.fixer.io/api/latest?access_key=8ad7489817acb987992af9b95b7893cb&symbols=CAD,COP`
+    );
+    const eurcad = rates.CAD;
+    const eurcop = rates.COP;
 
-  //   const cadcop = Math.ceil(eurcop/eurcad);
-  //   setCop(cadcop)
-  //   console.log(cadcop)
-  //   return;
-  // }
+    const cadcop = Math.ceil(eurcop / eurcad);
+    setCop(cadcop);
+    console.log(cadcop);
+    return;
+  };
 
-  // useEffect(() => {
-  //   checkRate();
-  // })
+  useEffect(() => {
+    checkRate();
+  });
   return (
-    <div style={{height: '100vh', backgroundColor: 'grey', display:'flex'}}>
-      <Grid container style={{margin: 'auto'}} justify="center" alignItems='center' spacing={3}>
-        <Grid item xs={12} style={{textAlign:'center', height: '40px', lineHeight: '40px'}}>
+    <div style={{ height: "100vh", backgroundColor: "grey", display: "flex" }}>
+      <Grid
+        container
+        style={{ margin: "auto" }}
+        justify="center"
+        alignItems="center"
+        spacing={3}
+      >
+        <Grid
+          item
+          xs={12}
+          style={{ textAlign: "center", height: "40px", lineHeight: "40px" }}
+        >
           <span>COPCAD: {cop}</span>
         </Grid>
-          {tarjetas.map((info, i) => (
-            <Grid item>
-              <Tarjeta info={info} />
-            </Grid>
-          ))}
+        {tarjetas.map((info, i) => (
+          <Grid item>
+            <Tarjeta info={info} />
+          </Grid>
+        ))}
       </Grid>
     </div>
-   );
+  );
 };
 
 const tarjetas = [
